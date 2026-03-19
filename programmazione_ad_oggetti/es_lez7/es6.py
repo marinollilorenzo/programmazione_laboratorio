@@ -1,8 +1,8 @@
-b = True
-while b:
+while True:
     try:
         inpt = int(input("Inserisci un valore intero:"))
-        b = False
-        print(inpt**2)
+        break
     except ValueError:
         print("Errore: devi inserire un intero!")
+        
+print(inpt**2)
