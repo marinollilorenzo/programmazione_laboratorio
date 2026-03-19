@@ -1,3 +1,13 @@
+def get_two_numbers()->tuple[int, int]:
+    while True:
+        try:
+            x, y = input("dammi due numeri separati dalla virgola:").strip().split(",")
+            x, y = int(x), int(y)
+            return x,y
+        except ValueError:
+            print("Errore: devi inserire due interi separati dalla virgola(es 5,4)!")
+    
+
 while True:
     try:
         inpt = int(input(f"""
@@ -11,22 +21,10 @@ while True:
                 print("Good Bye")
                 break
             case 1:
-                while True:
-                    try:
-                        x, y = input("dammi due numeri separati dalla virgola:").strip().split(",")
-                        x, y = int(x), int(y)
-                        break
-                    except ValueError:
-                        print("Errore: devi inserire due interi separati dalla virgola(es 5,4)!")
+                x, y = get_two_numbers()
                 print(f"La somma è {x+y}")
             case 2:
-                while True:
-                    try:
-                        x, y = input("dammi due numeri separati dalla virgola:").strip().split(",")
-                        x, y = int(x), int(y)
-                        break
-                    except ValueError:
-                        print("Errore: devi inserire due interi separati dalla virgola(es 5,4)!")
+                x, y = get_two_numbers()
                 print(f"La differenza è {x-y}")
             
             case _:
