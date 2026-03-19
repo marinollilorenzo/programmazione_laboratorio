@@ -1,5 +1,4 @@
 class CSVFile:
-    
     def __init__(self, filepath):
         if(isinstance(filepath, str)):
             self.filepath = filepath
@@ -14,12 +13,12 @@ class CSVFile:
             print(f"Errore inateso:{e}")
 
     def get_data(self, start=None, end=None):
-        start = 0 if start is None or start <= 0 or (end is not None and start > end) else start
+        start = 0 if start is None or start <= 0 or (end is not None and start > end) else start - 1
         lst = []
         try:
             with open (self.filepath, 'r') as fi:
                 lines = fi.readlines()
-                end = len(lines) if end is None or end <= 0 or end < start or end >= len(lines) else end + 1
+                end = len(lines) if end is None or end <= 0 or end < start or end >= len(lines) else end
                 for i in range(start, end):
                     lst.append(lines[i].strip("\n").split(","))
         except FileNotFoundError:
@@ -39,16 +38,16 @@ class NumericalCSVFile(CSVFile):
             print(f"Errore nel parsing della stringa:'{value}' in float")
             return value
     
-    def convert_all_in_float(self):
-        lst = super().get_data()
+    def convert_all_in_float(self, start=None, end=None):
+        lst = super().get_data(start=start, end=end)
         for line in lst[1:]:
             line[1:] = [self._safe_float(number) for number in line[1:]]
         return lst
         
         
 
-csv_file = CSVFile("DOCS/shampo.csv")
-lst = csv_file.get_data(start=10, end=4)
+csv_file = NumericalCSVFile("DOCS/shampo.csv")
+lst = csv_file.convert_all_in_float(start=10, end=4)
 for i, item in enumerate(lst):
     print(i, item)
 
