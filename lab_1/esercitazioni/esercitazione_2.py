@@ -38,7 +38,6 @@ def compute_variations(time_series : CSVTimeSeriesFile, first_year, last_year):
             try:
                 if int(line[0].split("-")[0]) == i:
                     try:
-                        n = int(line[1])
                         s += int(line[1])
                         l += 1
                     except TypeError:
