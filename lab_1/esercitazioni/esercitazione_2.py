@@ -1,6 +1,5 @@
 class ExamException(Exception):
     pass
-
 class CSVTimeSeriesFile:
     
     def __init__(self, name):
@@ -20,7 +19,6 @@ class CSVTimeSeriesFile:
         except:
             raise ExamException("Errore: generico")
         return ret
-
 
 def compute_variations(time_series : CSVTimeSeriesFile, first_year, last_year):
     try:
@@ -56,6 +54,7 @@ def compute_variations(time_series : CSVTimeSeriesFile, first_year, last_year):
             continue
         if (year+1) in years:
             ret[f"{year}-{year+1}"] = round((years[year + 1] - years[year]), 3)
+            year += 1
         else:
             it = year+2
             while it not in years and it <= last_year:
@@ -63,25 +62,19 @@ def compute_variations(time_series : CSVTimeSeriesFile, first_year, last_year):
             if it <= last_year and it in years:
                 ret[f"{year}-{it}"] = round((years[it] - years[year]), 3)
                 year = it
-        year += 1
     if len(ret) == 0:
         raise ExamException("Errore: dati inseriti non validi")
-    return ret
-        
+    return ret 
         
 def date_is_ordered(date1, date2):
     date1 = date1.split("-")
     d1 = date1[0] + date1[1]
     date2 = date2.split("-")
     d2 = date2[0] + date2[1]
-    return int(d2) > int(d1)
-    
+    return int(d2) > int(d1) 
 
 csv = CSVTimeSeriesFile(name = "lab_1/esercitazioni/data.csv")
 lst = csv.get_data()
-
-# for item in lst:
-#     print(item)
 dct = compute_variations(csv, "1949", "1960")
 print("Valori finali:")
 for item,key in dct.items():
