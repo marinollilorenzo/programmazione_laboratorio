@@ -1,4 +1,4 @@
-class ExamException:
+class ExamException(Exception):
     pass
 class CSVTimeSeriesFile:
  
@@ -29,40 +29,39 @@ class CSVTimeSeriesFile:
         return lst
 
 
-def compute_variations(time_series: CSVTimeSeriesFile, first_year: int, last_year: int, N: int)->dict:
-    if N >= last_year-first_year:
+def compute_variations(time_series, first_year: int, last_year: int, N: int)->dict:
+    if N >= last_year - first_year + 1:
         raise ExamException("Errore: N deve essere minore della finestra di intervallo")
-    data = time_series.get_data()
     dct_years = {}
     dct_years_len = {}
     #Inizializzo dizionari
     for i in range(first_year, last_year + 1):
-        dct_years[i] = 0
-        dct_years_len[i] = 0
+        dct_years[f"{i}"] = 0
+        dct_years_len[f"{i}"] = 0
     #scorro il file csv per trovare tutti gli anni presenti e somamre i valori delle medie del mese tenendo conto di tutti i mesi per eventuali mesi mancanti
-    for line in data:
+    for line in time_series:
         year = int(line[0].strip().split("/")[0])  
-        if year in dct_years:
-            dct_years[year] += line[1]
-            dct_years_len[year] += 1
+        if str(year) in dct_years:
+            dct_years[str(year)] += line[1]
+            dct_years_len[str(year)] += 1
     dct_years_mean = {} 
     #per ogni anno trovo la media annuale
     for i in range(first_year, last_year + 1):
-        if dct_years_len[i] > 0:
-            dct_years_mean[i] = round(dct_years[i] / dct_years_len[i], 3)
+        if dct_years_len[str(i)] > 0:
+            dct_years_mean[str(i)] = round(dct_years[str(i)] / dct_years_len[str(i)], 3)
         else:
-            dct_years_mean[i] = 0
+            dct_years_mean[str(i)] = 0
     dct_years_mean_last_n = {}
     
     for year in range(first_year + N, last_year + 1):
-        dct_years_mean_last_n[year] = 0
-        for i in range(i - N, i):
-            dct_years_mean_last_n[year] += dct_years_mean[i] 
-        dct_years_mean_last_n[year] /= N
-        dct_years_mean_last_n[year] = round(dct_years_mean_last_n[year],3)
+        dct_years_mean_last_n[str(year)] = 0
+        for i in range(year - N, year):
+            dct_years_mean_last_n[str(year)] += dct_years_mean[str(i)] 
+        dct_years_mean_last_n[str(year)] /= N
+        dct_years_mean_last_n[str(year)] = round(dct_years_mean_last_n[str(year)],3)
     dct_years_mean_diff = {}
     for year in range(first_year + N, last_year + 1):
-        dct_years_mean_diff[year] = round(dct_years_mean[year] - dct_years_mean_last_n[year], 3)
+        dct_years_mean_diff[str(year)] = round(dct_years_mean[str(year)] - dct_years_mean_last_n[str(year)], 3)
 
     return dct_years_mean_diff
 
@@ -83,5 +82,5 @@ def get_years_out_of_range(time_series: CSVTimeSeriesFile, start_temp: float, en
 #time_series_file = CSVTimeSeriesFile(name="lab_1/esercitazioni/GlobalTemperatures.csv")
 time_series_file = CSVTimeSeriesFile(name="GlobalTemperatures.csv")
 
-print(compute_variations(time_series_file, 1900, 1904, 3))
+print(compute_variations(time_series_file.get_data(), 1900, 1904, 3))
 print(get_years_out_of_range(time_series_file, 0, 15))
