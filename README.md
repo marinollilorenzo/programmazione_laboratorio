@@ -3,7 +3,7 @@
 Benvenuti nella repository del corso di **Laboratorio di Introduzione alla Programmazione**. 
 Questo materiale fa parte del programma didattico del secondo semestre, primo anno della Laurea Triennale in **Intelligenza Artificiale e Data Analytics**.
 
-L'obiettivo di questa repository è raccogliere tutti gli script, gli esercizi e le simulazioni d'esame affrontati durante il corso, per prepararsi al meglio sia sulla logica di programmazione pura che sull'analisi dei dati.
+L'obiettivo di questa repository è raccogliere tutti gli script, gli esercizi e le simulazioni d'esame affrontati durante il corso.
 
 ---
 
@@ -17,10 +17,9 @@ Questa cartella contiene tutti i fondamenti del linguaggio Python visti nella pr
 * **Esercitazioni:** File Python dedicati all'allenamento in vista della prova pratica.
 * **DOCS & Data:** Vari file di testo (`.txt`) e dati (`.csv`) utilizzati per testare le operazioni di Input/Output.
 
-### 📊 Modulo 2: Data Science (`lab_2`) - *[IN CORSO 🚧]*
-Questa sezione è dedicata all'esplorazione e manipolazione dei dati tramite le principali librerie scientifiche di Python: **NumPy**, **Pandas**, **Matplotlib** e **Seaborn**.
-* A differenza del Modulo 1, qui le lezioni e gli esercizi sono forniti sotto forma di **Jupyter Notebook** (`.ipynb`), che permettono un approccio interattivo perfetto per la data visualization.
-* **Nota:** *Le lezioni di questo modulo sono attualmente in corso di svolgimento. La cartella verrà aggiornata progressivamente con i nuovi Notebook man mano che verranno affrontati in aula.*
+### 📊 Modulo 2: Data Science (`lab_2`) -
+Questa sezione è dedicata all'esplorazione e manipolazione dei dati tramite le principali librerie scientifiche di Python: **NumPy**, **Pandas**, **Matplotlib**, **Seaborn**, **Scipy**.
+* Le lezioni e gli esercizi sono forniti sotto forma di **Jupyter Notebook** (`.ipynb`), che permettono un approccio interattivo perfetto per la data visualization.
 
 ---
 
@@ -31,12 +30,9 @@ Le librerie necessarie (come `numpy`, `pandas`, `matplotlib`, ecc.) e le imposta
 * `pyproject.toml`
 * `uv.lock`
 
-Buono studio e buona programmazione! 🚀
 
 ## Struttura cartelle:
-
 ```
-PROGRAMMAZIONE_LABORATORIO
 ├── README.md
 ├── lab_1
 │   ├── DOCS
@@ -112,11 +108,43 @@ PROGRAMMAZIONE_LABORATORIO
 │   │   ├── 2.1_NumPy2.ipynb
 │   │   ├── 2.2_Esercizi_lez_2.ipynb
 │   │   └── emissioni.txt
-│   └── lezione_3
-│       ├── 3.1_Pandas_1.ipynb
-│       ├── 3.2_Pandas_2.ipynb
-│       ├── 3.3_Matplotlib.ipynb
-│       └── 3.4_Pandas_Plotting.ipynb
+│   ├── lezione_3
+│   │   ├── 3.1_Pandas_1.ipynb
+│   │   ├── 3.2_Pandas_2.ipynb
+│   │   ├── 3.3_Matplotlib.ipynb
+│   │   ├── 3.4_Pandas_Plotting.ipynb
+│   │   ├── 3.5_Esercizi_lez_3.ipynb
+│   │   ├── drinks.csv
+│   │   └── sales.csv
+│   ├── lezione_5
+│   │   ├── 5.1_Distribuzioni_campionamento.ipynb
+│   │   ├── 5.2_Matplotlib2.ipynb
+│   │   ├── 5.3_Seaborn.ipynb
+│   │   ├── 5.4_Esercizi_lez_5.ipynb
+│   │   ├── penguins.csv
+│   │   └── titanic.csv
+│   ├── lezione_6
+│   │   ├── 6.0_Pandas3.ipynb
+│   │   ├── 6.1_Pandas4.ipynb
+│   │   ├── 6.2_Matplotlib3.ipynb
+│   │   ├── 6.3_Seaborn2.ipynb
+│   │   └── 6.4_Esericzi.ipynb
+│   ├── lezione_7
+│   │   ├── 7.1_Scipy.ipynb
+│   │   ├── 7.2_Regressione.ipynb
+│   │   ├── 7.3_pred_model.ipynb
+│   │   ├── 7.4_esercizi_lez7.ipynb
+│   │   ├── fit_base.py
+│   │   ├── importa_dati.py
+│   │   ├── model.py
+│   │   ├── model_optimise.py
+│   │   └── shampoo_sales.csv
+│   ├── lezione_8
+│   │   ├── 8.1_Scikitlearn.ipynb
+│   │   ├── 8.2_plotly.ipynb
+│   │   └── 8.3_esercizi.ipynb
+│   └── simulazioni_esami
+│       └── simulazEsame.ipynb
 ├── pyproject.toml
 └── uv.lock
 ```
